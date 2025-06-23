@@ -1,5 +1,4 @@
 import StickyScroll from "@/components/ImageStackingPages";
-import CircularText from "@/components/CircularText";
 import { Quicksand } from 'next/font/google';
 import { useEffect } from "react";
 import gsap from "gsap";
@@ -65,12 +64,12 @@ export default function Introduction() {
 				{/* Right: CircularText above right section */}
 				<div className="w-full md:w-5/12 flex flex-col items-end mt-12 md:mt-20">
 					<div className="mb-32 w-full flex justify-end pr-20">
-						<CircularText
+						{/* <CircularText
 							text="Hello * Namaste * Bonjour * Hola * Ciao * "
 							onHover="speedUp"
 							spinDuration={20}
 							className="custom-class"
-						/>
+						/> */}
 					</div>
 					<div className="flex flex-col justify-start items-start mt-[12vh] pl-0 md:pl-24 pr-0 md:pr-40 w-full">
 						<p className={`text-xl md:text-2xl text-gray-400 mb-8 ${quicksand.className}`}>For casting, brand partnerships, or collaborations, feel free to get in touch.</p>
