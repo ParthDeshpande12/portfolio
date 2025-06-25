@@ -51,8 +51,8 @@ export default function Home() {
 
   const handleLoadingComplete = () => {
     setIsLoading(false)
-    setLoaderShown(true) // Set loaderShown true immediately after loading
     setTimeout(() => setShowNavbar(true), 300) // Fade in after loading
+    setLoaderShown(true)
   }
 
   return (
