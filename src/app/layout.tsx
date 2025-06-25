@@ -4,6 +4,8 @@ import "./globals.css";
 import { GSAPProvider } from "@/lib/gsap-context";
 import GlassmorphTopBar from "@/components/GlassmorphTopBar";
 import MotionProvider from "@/components/MotionProvider";
+import { LoaderProvider } from "@/context/LoaderContext";
+import GlobalTopMenu from "@/components/GlobalTopMenu";
 
 const inter = Inter({
     variable: "--font-inter",
@@ -25,11 +27,16 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body
-                className={`${inter.variable} font-sans antialiased bg-neutral-950 text-white`}
+                className={`${inter.variable} font-sans antialiased bg-neutral-950 text-white min-h-fit h-fit`}
             >
                 <GSAPProvider>
+                  <LoaderProvider>
+                    <GlobalTopMenu />
                     <GlassmorphTopBar />
-                    <MotionProvider>{children}</MotionProvider>
+                    <MotionProvider>
+                      {children}
+                    </MotionProvider>
+                  </LoaderProvider>
                 </GSAPProvider>
             </body>
         </html>

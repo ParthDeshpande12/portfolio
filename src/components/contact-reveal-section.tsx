@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react"
 import { motion, useScroll, useTransform, useSpring } from "framer-motion"
 import { FaLinkedin, FaInstagram, FaYoutube, FaFacebook } from "react-icons/fa"
+import { SiImdb } from "react-icons/si"
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 
@@ -261,6 +262,18 @@ const ContactRevealSection = ({ className = "", portraitImage = "/portrait.png" 
           >
             <FaInstagram size={28} />
             <span className="text-base">Instagram</span>
+          </a>
+          {/* IMDB Button */}
+          <a
+            href="https://www.imdb.com/name/nm14409813/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-3 text-black/60 hover:text-yellow-500 transition-all duration-300 font-light focus:outline-none"
+            tabIndex={0}
+            style={{ pointerEvents: 'auto' }}
+          >
+            <SiImdb size={28} />
+            <span className="text-base">IMDB</span>
           </a>
         </div>
       </motion.div>

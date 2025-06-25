@@ -2,7 +2,7 @@ import { Home, FileText, Briefcase, Zap, Mail } from 'lucide-react'
 
 export const navigationItems = [
   {
-    id: "hero",
+    id: "hero-section",
     name: "Home",
     icon: Home,
   },
@@ -26,4 +26,4 @@ export const navigationItems = [
     name: "Contact",
     icon: Mail,
   },
-] 
+]

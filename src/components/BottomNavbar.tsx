@@ -17,9 +17,9 @@ interface BottomNavbarProps {
 }
 
 const defaultNavItems: NavItem[] = [
-  { id: "hero", name: "Home", icon: User },
+  { id: "hero-section", name: "Home", icon: User },
   { id: "introduction", name: "About", icon: FileText },
-  { id: "work", name: "Work", icon: Briefcase },
+  { id: "features", name: "Features", icon: Briefcase },
   { id: "integrations", name: "Skills", icon: Zap },
   { id: "contact", name: "Contact", icon: Link },
 ]
@@ -62,10 +62,13 @@ const BottomNavbar = ({ items = defaultNavItems, onSectionChange }: BottomNavbar
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId)
     if (element) {
-      element.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      })
+      // Scroll to the element's top minus any fixed nav height (if needed, adjust offset)
+      const rect = element.getBoundingClientRect()
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop
+      // If you have a fixed navbar, adjust offset here (e.g., -80)
+      const offset = 0
+      const top = rect.top + scrollTop - offset
+      window.scrollTo({ top, behavior: "smooth" })
     }
   }
 

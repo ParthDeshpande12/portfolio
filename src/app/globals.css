@@ -196,3 +196,26 @@
   opacity: 1 !important;
   transform: translateY(0) !important;
 }
+/* Add this at the end of your globals.css */
+.actress-bio-page {
+  height: auto !important;
+  min-height: 100vh;
+  overflow-y: auto !important;
+  width: 100%;
+}
+
+/* Force scrolling for the actress bio page */
+.actress-bio-page ~ * {
+  overflow: visible !important;
+}
+
+/* Override any conflicting body styles when on actress bio page */
+body:has(.actress-bio-page) {
+  height: auto !important;
+  overflow: auto !important;
+}
+
+html:has(.actress-bio-page) {
+  height: auto !important;
+  overflow: auto !important;
+}

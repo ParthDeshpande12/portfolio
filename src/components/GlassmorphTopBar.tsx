@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import LoaderTextAnimation from "@/components/LoaderTextAnimation";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -66,6 +67,10 @@ export default function GlassmorphTopBar() {
           background: "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.3) 50%, transparent 100%)",
         }}
       />
+      {/* Loader animation text */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-auto">
+        <LoaderTextAnimation />
+      </div>
     </div>
   );
-} 
+}
