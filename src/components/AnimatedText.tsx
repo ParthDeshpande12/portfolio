@@ -8,6 +8,7 @@ interface AnimatedTextProps {
   variant?: "split" | "slide" | "fade";
   staggerDelay?: number;
   as?: ElementType;
+  isActive?: boolean;
 }
 
 export const AnimatedText = ({
@@ -16,6 +17,7 @@ export const AnimatedText = ({
   variant = "split",
   staggerDelay = 0,
   as: Component = "div",
+  isActive = true,
 }: AnimatedTextProps) => {
   // Dummy variants for fallback
   const variants = {
@@ -31,7 +33,7 @@ export const AnimatedText = ({
         <motion.div
           variants={variants.stagger}
           initial="hidden"
-          animate="visible"
+          animate={isActive ? "visible" : "hidden"}
           exit="exit"
         >
           {text.split("").map((char, i) => (
@@ -56,7 +58,7 @@ export const AnimatedText = ({
           className="block"
           variants={variants.slide}
           initial="hidden"
-          animate="visible"
+          animate={isActive ? "visible" : "hidden"}
           exit="exit"
         >
           {text}
@@ -70,7 +72,7 @@ export const AnimatedText = ({
       <motion.span
         variants={variants.fade}
         initial="hidden"
-        animate="visible"
+        animate={isActive ? "visible" : "hidden"}
         exit="exit"
       >
         {text}
