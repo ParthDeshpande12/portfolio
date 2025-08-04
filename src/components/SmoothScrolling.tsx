@@ -20,11 +20,12 @@ export default function SmoothScrolling() {
     requestAnimationFrame(raf)
 
     // GSAP ScrollTrigger integration
-    if (typeof window !== 'undefined' && window.ScrollTrigger) {
-      lenis.on('scroll', window.ScrollTrigger.update)
+    if (typeof window !== 'undefined' && (window as any).ScrollTrigger) {
+      const ScrollTrigger = (window as any).ScrollTrigger
+      lenis.on('scroll', ScrollTrigger.update)
       
-      window.ScrollTrigger.scrollerProxy(document.body, {
-        scrollTop(value) {
+      ScrollTrigger.scrollerProxy(document.body, {
+        scrollTop(value: any) {
           if (arguments.length) {
             lenis.scrollTo(value, { immediate: true })
             return
@@ -38,8 +39,8 @@ export default function SmoothScrolling() {
       })
       
       // Refresh ScrollTrigger after setup
-      window.ScrollTrigger.addEventListener("refresh", () => lenis.raf(Date.now()))
-      window.ScrollTrigger.refresh()
+      ScrollTrigger.addEventListener("refresh", () => lenis.raf(Date.now()))
+      ScrollTrigger.refresh()
     }
 
     // Cleanup
