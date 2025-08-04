@@ -74,6 +74,11 @@ export default function OsmoMenu() {
       const menuButtonIcon = menuButton?.querySelector(".menu-button-icon")
       const menuCloseButton = navWrap?.querySelector(".menu-close-button")
 
+      // Type guards to ensure elements exist before using them
+      if (!navWrap || !overlay || !menu || !bgPanels || !menuLinks || !fadeTargets || !menuButton || !menuButtonTexts || !menuButtonIcon || !menuCloseButton) {
+        return
+      }
+
       const tl = gsap.timeline()
 
       if (!open) {
