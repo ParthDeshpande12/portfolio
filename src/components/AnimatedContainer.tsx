@@ -7,6 +7,7 @@ interface AnimatedContainerProps {
   className?: string;
   variant?: "stagger" | "fade" | "slide";
   delay?: number;
+  isActive?: boolean;
 }
 
 export const AnimatedContainer = ({
@@ -14,6 +15,7 @@ export const AnimatedContainer = ({
   className = "",
   variant = "fade",
   delay = 0,
+  isActive = true,
 }: AnimatedContainerProps) => {
   // Dummy variants for fallback
   const variants = {
@@ -36,7 +38,7 @@ export const AnimatedContainer = ({
       className={className}
       variants={getVariant()}
       initial="hidden"
-      animate="visible"
+      animate={isActive ? "visible" : "hidden"}
       exit="exit"
       transition={{ delay }}
     >
