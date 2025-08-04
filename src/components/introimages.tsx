@@ -32,8 +32,6 @@ export default function IntroImages() {
   const sideImagesScale = useTransform(scrollYProgress, [0, 0.4, 0.55, 1], [1, 1, 0.8, 0.8])
 
   // Mobile-specific push distances (less aggressive)
-  const leftImagesPushMobile = useTransform(scrollYProgress, [0, 0.4, 0.55, 1], [0, 0, -100, -100])
-  const rightImagesPushMobile = useTransform(scrollYProgress, [0, 0.4, 0.55, 1], [0, 0, 100, 100])
 
   // Surprise text animation - appears AFTER zoom completes (back to original)
   const textOpacity = useTransform(scrollYProgress, [0, 0.55, 0.6, 1], [0, 0, 1, 1])

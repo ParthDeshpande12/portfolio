@@ -548,7 +548,7 @@ export default function ActressBio() {
                     >
                       <Star size={16} className="text-white/40" />
                       <div>
-                        <p className="text-xl">&quot;Life's Journey&quot; (2019 Popular TV)</p>
+                        <p className="text-xl">&quot;Life&rsquo;s Journey&quot; (2019 Popular TV)</p>
                         <p className="text-white/60 text-sm">Maya as Shreya</p>
                       </div>
                     </motion.div>

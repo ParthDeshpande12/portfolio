@@ -11,7 +11,6 @@ export default function GlobalTopMenu() {
   const [open, setOpen] = useState(false)
   const menuRef = useRef<HTMLDivElement>(null)
   const { loaderShown } = useLoaderContext()
-  const scrollYRef = useRef(0)
 
   useEffect(() => {
     // Load GSAP

@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState, useMemo, useCallback } from "react"
 import { gsap } from "gsap"
 import { CustomEase } from "gsap/CustomEase"
 import { Flip } from "gsap/Flip"
@@ -31,27 +31,26 @@ export default function SpiceMeridianPreloader({ onComplete }: SpiceMeridianPrel
 
   const [isClient, setIsClient] = useState(false)
   const [imagesLoaded, setImagesLoaded] = useState(false)
-  const [isCompleting, setIsCompleting] = useState(false)
 
   const INITIAL_ZOOM = 1.2
 
   // Using your app's images for smooth transition
-  const images = [
+  const images = useMemo(() => [
     "/images/a.png",
     "/images/b.png", 
     "/images/c.png",
     "/images/hero.jpg", // Final image that matches hero section
-  ]
+  ], [])
 
   // Function to initialize the animation
-  const initAnimation = () => {
-    if (!containerRef.current) return
+  const initAnimation = useCallback(() => {
+    if (!containerRef.current) return;
 
     // Kill any existing timeline
-    if (mainTlRef.current) mainTlRef.current.kill()
+    if (mainTlRef.current) mainTlRef.current.kill();
 
     // Reset button
-    gsap.set(restartBtnRef.current, { opacity: 0, pointerEvents: "none" })
+    gsap.set(restartBtnRef.current, { opacity: 0, pointerEvents: "none" });
 
     // Reset container with proper initial state
     gsap.set(containerRef.current, {
@@ -60,12 +59,12 @@ export default function SpiceMeridianPreloader({ onComplete }: SpiceMeridianPrel
       position: "relative",
       overflow: "hidden",
       opacity: 1,
-    })
+    });
 
     // Get all wrappers and images
-    const wrappers = containerRef.current.querySelectorAll(".image-wrapper")
-    const finalWrapper = containerRef.current.querySelector("#final-image") as HTMLElement
-    const finalImage = finalWrapper.querySelector("img") as HTMLImageElement
+    const wrappers = containerRef.current.querySelectorAll(".image-wrapper");
+    const finalWrapper = containerRef.current.querySelector("#final-image") as HTMLElement;
+    const finalImage = finalWrapper.querySelector("img") as HTMLImageElement;
 
     // Reset all wrappers to initial state - fix visibility glitch
     gsap.set(wrappers, {
@@ -80,7 +79,7 @@ export default function SpiceMeridianPreloader({ onComplete }: SpiceMeridianPrel
       yPercent: 0,
       opacity: 1,
       clearProps: "transform,transformOrigin",
-    })
+    });
 
     // Reset all images with initial zoom - ensure they're loaded
     gsap.set(containerRef.current.querySelectorAll(".image-wrapper img"), {
@@ -88,18 +87,17 @@ export default function SpiceMeridianPreloader({ onComplete }: SpiceMeridianPrel
       transformOrigin: "center center",
       opacity: 1,
       clearProps: "width,height",
-    })
+    });
 
     // Create a new timeline with longer delay to completely eliminate initial glitches
-    mainTlRef.current = gsap.timeline({ delay: 0.3 })
-    const mainTl = mainTlRef.current
+    mainTlRef.current = gsap.timeline({ delay: 0.3 });
+    const mainTl = mainTlRef.current;
 
     // PHASE 1: Image loading sequence - smoother timing
     wrappers.forEach((wrapper, index) => {
       if (index > 0) {
-        mainTl.add("image" + index, "<0.2")
+        mainTl.add("image" + index, "<0.2");
       }
-
       mainTl.to(
         wrapper,
         {
@@ -108,17 +106,17 @@ export default function SpiceMeridianPreloader({ onComplete }: SpiceMeridianPrel
           ease: "smoothBlur",
         },
         index > 0 ? "image" + index : 0,
-      )
-    })
+      );
+    });
 
     // PHASE 2: Final image expansion - longer delay for better timing
-    mainTl.add("finalAnimation", ">0.3")
+    mainTl.add("finalAnimation", ">0.3");
 
     mainTl.add(() => {
-      const state = Flip.getState(finalWrapper)
+      const state = Flip.getState(finalWrapper);
 
       // Remove overflow hidden to allow expansion
-      gsap.set(containerRef.current, { overflow: "visible" })
+      gsap.set(containerRef.current, { overflow: "visible" });
 
       // Position the final wrapper to cover the viewport
       gsap.set(finalWrapper, {
@@ -130,14 +128,14 @@ export default function SpiceMeridianPreloader({ onComplete }: SpiceMeridianPrel
         width: "100dvw",
         height: "100dvh",
         zIndex: 9999,
-      })
+      });
 
       // Use FLIP to animate the container expansion
       Flip.from(state, {
         duration: 1.4,
         ease: "customEase",
         absolute: true,
-      })
+      });
 
       // Simultaneously animate the image scale
       gsap.to(finalImage, {
@@ -146,21 +144,19 @@ export default function SpiceMeridianPreloader({ onComplete }: SpiceMeridianPrel
         ease: "customEase",
         onComplete: () => {
           // Start cross-fade transition
-          setIsCompleting(true)
           if (overlayRef.current) {
-            overlayRef.current.classList.add('fade-out')
+            overlayRef.current.classList.add('fade-out');
           }
-          
           // Call onComplete to start showing main content
           if (onComplete) {
-            onComplete()
+            onComplete();
           }
         },
-      })
-    }, "finalAnimation")
+      });
+    }, "finalAnimation");
 
-    return mainTl
-  }
+    return mainTl;
+  }, [INITIAL_ZOOM, containerRef, mainTlRef, onComplete, overlayRef, restartBtnRef]);
 
   useEffect(() => {
     setIsClient(true)
@@ -225,7 +221,7 @@ export default function SpiceMeridianPreloader({ onComplete }: SpiceMeridianPrel
       window.removeEventListener("resize", handleResize)
       if (mainTlRef.current) mainTlRef.current.kill()
     }
-  }, [isClient])
+  }, [isClient, images, initAnimation])
 
   const handleRestart = () => {
     initAnimation()
@@ -405,6 +401,7 @@ export default function SpiceMeridianPreloader({ onComplete }: SpiceMeridianPrel
         <div ref={containerRef} className="preloader-container">
           {images.map((src, index) => (
             <div key={index} className="image-wrapper" id={index === images.length - 1 ? "final-image" : undefined}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={src || "/placeholder.svg"} alt={`Image ${index + 1}`} />
             </div>
           ))}
