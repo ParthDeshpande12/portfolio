@@ -3,7 +3,7 @@
 import BottomNavbar from '@/components/BottomNavbar'
 import { navigationItems } from '@/config/navigation'
 import { useEffect, useState } from 'react'
-import LoadingScreen from "@/components/loading-screen"
+import SpiceMeridianPreloader from "@/components/SpiceMeridianPreloader"
 import { useLoaderContext } from "@/context/LoaderContext"
 
 // Extend the Window interface to include ScrollTrigger
@@ -21,23 +21,16 @@ import Features from '@/sections/Features'
 import Integrations from '@/sections/Integrations'
 import ContactUs from '@/sections/ContactUs'
 import UnfixedHero from "@/components/component"
+import SmoothScrolling from '@/components/SmoothScrolling'
 
 // Global flag to prevent loader on client-side navigation
 
 export default function Home() {
-  const { loaderShown, setLoaderShown } = useLoaderContext()
-  const [isLoading, setIsLoading] = useState(!loaderShown)
-  const [showNavbar, setShowNavbar] = useState(loaderShown)
+  const { setLoaderShown } = useLoaderContext()
+  const [showPreloader, setShowPreloader] = useState(true)
+  const [showNavbar, setShowNavbar] = useState(false)
 
   useEffect(() => {
-    if (!loaderShown) {
-      setIsLoading(true)
-      setShowNavbar(false)
-      window.scrollTo({ top: 0, behavior: "auto" })
-    } else {
-      setIsLoading(false)
-      setShowNavbar(true)
-    }
     // Fix ScrollTrigger race condition
     const timer = setTimeout(() => {
       if (typeof window !== "undefined" && window.ScrollTrigger) {
@@ -47,16 +40,30 @@ export default function Home() {
     }, 500) // Longer delay to ensure all components are ready
 
     return () => clearTimeout(timer)
-  }, [loaderShown])
+  }, [])
 
-  const handleLoadingComplete = () => {
-    setIsLoading(false)
-    setTimeout(() => setShowNavbar(true), 300) // Fade in after loading
+  const handlePreloaderComplete = () => {
+    // Update loader context for other components
     setLoaderShown(true)
+    
+    // Show main content immediately (no fade in)
+    setShowPreloader(false)
+    
+    // Show navbar with slight delay
+    setTimeout(() => setShowNavbar(true), 100)
   }
 
   return (
-    <main className="relative">
+    <>
+      {/* Smooth Scrolling */}
+      <SmoothScrolling />
+      
+      {/* Spice Meridian Preloader */}
+      {showPreloader && <SpiceMeridianPreloader onComplete={handlePreloaderComplete} />}
+      
+      {/* Main Content */}
+      {!showPreloader && (
+        <main className="relative">
       {/* Hero Section */}
       <section id="hero-section" className="bg-[#181a1b]">
         <UnfixedHero />
@@ -69,7 +76,7 @@ export default function Home() {
 
       {/* Features Section */}
       <section id="features" className="min-h-[200vh] h-auto w-full bg-black">
-        <Features />
+        <Features isActive={true} />
       </section>
 
       {/* Integrations Section */}
@@ -120,8 +127,7 @@ export default function Home() {
         <ContactUs />
       </section>
 
-      {/* Loading Screen and Explosion Grid */}
-      {isLoading && <LoadingScreen onLoadingComplete={handleLoadingComplete} />}
+      {/* Loading Screen removed - now using SpiceMeridianPreloader */}
 
       {/* Bottom Navigation */}
       <div className="fixed bottom-0 left-0 right-0 z-50 flex justify-center items-center w-full px-4 pointer-events-none">
@@ -131,6 +137,8 @@ export default function Home() {
           />
         </div>
       </div>
-    </main>
+        </main>
+      )}
+    </>
   )
 }

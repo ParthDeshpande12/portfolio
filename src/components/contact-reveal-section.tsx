@@ -205,22 +205,22 @@ const ContactRevealSection = ({ className = "", portraitImage = "/portrait.png" 
         <div className="space-y-5 text-black font-light">
           <div className="text-lg leading-relaxed drop-shadow-[0_2px_8px_rgba(0,0,0,0.10)]" style={{textShadow: '0 2px 16px rgba(0,0,0,0.18)', fontFamily: 'Poppins, Quicksand, Arial, sans-serif', fontWeight: 500, letterSpacing: '0.01em'}}>
             <span className="font-medium">Location: </span>
-            <span className="text-black/70">Mumbai (W)</span>
+            <span className="text-black/70">Bangalore, India</span>
           </div>
           <div className="text-lg leading-relaxed drop-shadow-[0_2px_8px_rgba(0,0,0,0.10)]" style={{textShadow: '0 2px 16px rgba(0,0,0,0.18)', fontFamily: 'Poppins, Quicksand, Arial, sans-serif', fontWeight: 500, letterSpacing: '0.01em'}}>
             <span className="font-medium">Email: </span>
-            <span className="text-black/70">officialsumanrana@gmail.com</span>
+            <span className="text-black/70">maya.creative@example.com</span>
           </div>
           <div className="text-lg leading-relaxed drop-shadow-[0_2px_8px_rgba(0,0,0,0.10)]" style={{textShadow: '0 2px 16px rgba(0,0,0,0.18)', fontFamily: 'Poppins, Quicksand, Arial, sans-serif', fontWeight: 500, letterSpacing: '0.01em'}}>
             <span className="font-medium">Phone: </span>
-            <span className="text-black/70">91 837 799 0420</span>
+            <span className="text-black/70">+91 87654 32109</span>
           </div>
         </div>
 
         {/* Social Icons - original position below contact info */}
         <div className="flex items-center gap-8 pt-8 relative z-50">
           <a
-            href="https://www.linkedin.com/in/sumanranaofficial/"
+            href="https://linkedin.com"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-3 text-black/60 hover:text-blue-700 transition-all duration-300 font-light focus:outline-none"
@@ -231,7 +231,7 @@ const ContactRevealSection = ({ className = "", portraitImage = "/portrait.png" 
             <span className="text-base">LinkedIn</span>
           </a>
           <a
-            href="https://www.youtube.com/@sumanranaofficial"
+            href="https://youtube.com"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-3 text-black/60 hover:text-red-600 transition-all duration-300 font-light focus:outline-none"
@@ -242,7 +242,7 @@ const ContactRevealSection = ({ className = "", portraitImage = "/portrait.png" 
             <span className="text-base">YouTube</span>
           </a>
           <a
-            href="https://www.facebook.com/sumanranaofficial"
+            href="https://facebook.com"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-3 text-black/60 hover:text-blue-500 transition-all duration-300 font-light focus:outline-none"
@@ -253,7 +253,7 @@ const ContactRevealSection = ({ className = "", portraitImage = "/portrait.png" 
             <span className="text-base">Facebook</span>
           </a>
           <a
-            href="https://www.instagram.com/sumanranaactor"
+            href="https://instagram.com"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-3 text-black/60 hover:text-pink-600 transition-all duration-300 font-light focus:outline-none"
@@ -265,7 +265,7 @@ const ContactRevealSection = ({ className = "", portraitImage = "/portrait.png" 
           </a>
           {/* IMDB Button */}
           <a
-            href="https://www.imdb.com/name/nm14409813/"
+            href="https://imdb.com"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-3 text-black/60 hover:text-yellow-500 transition-all duration-300 font-light focus:outline-none"

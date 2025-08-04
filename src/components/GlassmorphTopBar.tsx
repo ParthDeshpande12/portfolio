@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import LoaderTextAnimation from "@/components/LoaderTextAnimation";
+import LoadingScreenStatic from "@/components/loading-screen-static";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -15,15 +15,15 @@ export default function GlassmorphTopBar() {
   useEffect(() => {
     if (!barRef.current) return;
 
-    // Set initial state - completely hidden and moved up (like header.png)
+    // Set initial state - completely hidden and moved up
     gsap.set(barRef.current, { opacity: 0, y: -40, display: "block" });
 
-    // Create ScrollTrigger to watch for the content section (same as header.png)
+    // Show glassmorph bar only after scrolling past the main content trigger
     const logoTrigger = ScrollTrigger.create({
-      trigger: ".content", // Target the content section like header.png does
-      start: "top 95%", // Same trigger point as header.png
+      trigger: ".content", // Use the main content section as the trigger
+      start: "top top", // When the top of .content hits the top of the viewport
+      end: "+=99999",
       onEnter: () => {
-        // Fade in the glassmorph bar from top when content is triggered (like header.png)
         gsap.to(barRef.current, {
           opacity: 1,
           y: 0,
@@ -32,7 +32,6 @@ export default function GlassmorphTopBar() {
         });
       },
       onLeaveBack: () => {
-        // Reset to hidden position when scrolling back up (like header.png)
         gsap.to(barRef.current, {
           opacity: 0,
           y: -40,
@@ -67,9 +66,9 @@ export default function GlassmorphTopBar() {
           background: "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.3) 50%, transparent 100%)",
         }}
       />
-      {/* Loader animation text */}
+      {/* Static LoadingScreen (no animation, no props) */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-auto">
-        <LoaderTextAnimation />
+        <LoadingScreenStatic />
       </div>
     </div>
   );

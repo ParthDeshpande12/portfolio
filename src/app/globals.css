@@ -5,6 +5,20 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Custom animations for smooth transitions */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -218,4 +232,17 @@ body:has(.actress-bio-page) {
 html:has(.actress-bio-page) {
   height: auto !important;
   overflow: auto !important;
+}
+
+/* Lenis smooth scrolling styles */
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
 }

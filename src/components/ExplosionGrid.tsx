@@ -316,24 +316,24 @@ export default function ExplosionGrid({ items, onItemClick }: ExplosionGridProps
   return (
     <div className="font-sans bg-black text-white">
       {/* Hero Section */}
-      <div ref={heroSectionRef} className="h-screen flex flex-col items-center justify-center sticky top-0 z-20 bg-black">
+      <div ref={heroSectionRef} className="h-screen flex flex-col items-center justify-center sticky top-0 z-20 bg-black px-2 sm:px-4">
         {/* Top Navigation */}
-        <div className="absolute top-8 left-8 right-8 flex justify-between items-center">
-          <div className="text-white text-sm font-light tracking-wider">PORTFOLIO</div>
-          <div className="text-white text-sm font-light tracking-wider">LET&#39;S WORK TOGETHER</div>
+        <div className="absolute top-4 sm:top-8 left-2 right-2 sm:left-8 sm:right-8 flex justify-between items-center">
+          <div className="text-white text-xs sm:text-sm font-light tracking-wider">PORTFOLIO</div>
+          <div className="text-white text-xs sm:text-sm font-light tracking-wider">LET&#39;S WORK TOGETHER</div>
         </div>
 
         {/* Main Content */}
         <div className="text-center">
           <h1
             ref={heroTitleRef}
-            className="text-8xl md:text-9xl font-light text-white tracking-wider mb-8"
+            className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-light text-white tracking-wider mb-4 sm:mb-8"
             style={{ fontFamily: "Arial, sans-serif" }}
           >
             PHOTOGRAPHY
           </h1>
 
-          <div ref={scrollTextRef} className="text-white text-sm font-light tracking-widest opacity-70">
+          <div ref={scrollTextRef} className="text-white text-xs sm:text-sm font-light tracking-widest opacity-70">
             SCROLL DOWN
           </div>
         </div>
@@ -341,9 +341,9 @@ export default function ExplosionGrid({ items, onItemClick }: ExplosionGridProps
         {/* Gallery Text - appears before grid animation */}
         <div 
           ref={galleryTextRef}
-          className="absolute bottom-32 left-1/2 transform -translate-x-1/2 text-center"
+          className="absolute bottom-12 sm:bottom-24 left-1/2 transform -translate-x-1/2 text-center"
         >
-          <span className="text-white/70 text-sm font-light tracking-widest">
+          <span className="text-white/70 text-xs sm:text-sm font-light tracking-widest">
             MY WORK GALLERY
           </span>
         </div>
@@ -353,26 +353,34 @@ export default function ExplosionGrid({ items, onItemClick }: ExplosionGridProps
       <div ref={gridSectionRef} className="h-screen flex flex-col items-center justify-center bg-black">
         <div
           ref={gridRef}
-          className="grid grid-cols-9 grid-rows-4 gap-2 w-[95%] max-w-7xl h-[80%]"
-          style={{ perspective: "1000px" }}
+          className="grid grid-cols-6 grid-rows-6 gap-4 w-full max-w-7xl h-[90vh] sm:h-[110vh] md:h-[80vh] lg:h-[80vh] mx-auto overflow-visible justify-items-stretch items-stretch"
+          style={{ perspective: "1200px" }}
         >
-          {items.slice(0, 36).map((item) => (
-            <div key={item.id} className="grid-item group rounded-lg overflow-hidden shadow-lg relative cursor-pointer">
-              <Image
-                src={item.image || "/placeholder.svg"}
-                alt={item.title}
-                fill
-                className="object-cover block transition-all duration-300 group-hover:blur-sm"
-                sizes="(max-width: 768px) 50vw, 11vw"
-              />
-              <button
-                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white/90 border-none rounded-full px-4 py-2 flex items-center justify-center text-sm cursor-pointer opacity-0 transition-all duration-300 backdrop-blur-sm text-gray-800 font-bold group-hover:opacity-100 hover:scale-110"
-                onClick={() => handleItemClick(item)}
+          {items.slice(0, 36).map((item) => {
+            // All images always visible, no responsive hiding
+            return (
+              <div
+                key={item.id}
+                className={"grid-item group rounded-lg overflow-hidden shadow-lg relative cursor-pointer flex items-stretch min-h-0 min-w-0 w-full h-full"}
               >
-                View
-              </button>
-            </div>
-          ))}
+                <div className="relative w-full h-full">
+                  <Image
+                    src={item.image || "/placeholder.svg"}
+                    alt={item.title}
+                    fill
+                    className="object-cover block transition-all duration-300 group-hover:blur-sm"
+                    sizes="(max-width: 640px) 50vw, (max-width: 768px) 25vw, (max-width: 1024px) 16vw, 11vw"
+                  />
+                  <button
+                    className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white/90 border-none rounded-full px-4 py-2 flex items-center justify-center text-xs sm:text-sm cursor-pointer opacity-0 transition-all duration-300 backdrop-blur-sm text-gray-800 font-bold group-hover:opacity-100 hover:scale-110"
+                    onClick={() => handleItemClick(item)}
+                  >
+                    View
+                  </button>
+                </div>
+              </div>
+            )
+          })}
         </div>
       </div>
 
@@ -396,7 +404,7 @@ export default function ExplosionGrid({ items, onItemClick }: ExplosionGridProps
               ×
             </button>
 
-            <div className="relative w-full h-[500px]">
+            <div className="relative w-full h-60 sm:h-80 md:h-[500px]">
               <Image
                 src={selectedItem.image || "/placeholder.svg"}
                 alt={selectedItem.title}

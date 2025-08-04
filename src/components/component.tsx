@@ -55,6 +55,7 @@ export default function UnfixedHero() {
           0,
         )
 
+
         // BOOST section with wavy swipe transition
         if (boostHeadingRef.current && boostTextRef.current) {
           // Set initial states
@@ -263,24 +264,25 @@ export default function UnfixedHero() {
               </div>
             </div>
           </div>
+
         </section>
       </div>
 
       {/* BOOST Section - Hindi Heading Morphing on Scroll */}
       <section 
         ref={boostSectionRef}
-        className="min-h-screen bg-[#181a1b] text-white relative z-20 py-8 px-8 md:px-16 lg:px-24 flex items-center"
+        className="min-h-screen bg-[#181a1b] text-white relative z-20 py-8 px-4 sm:px-6 md:px-12 lg:px-24 flex items-center"
       >
         <div className="max-w-7xl mx-auto">
           <div className="text-center">
             {/* Morphing heading: Namaste → नमस्ते */}
             <h2 
               ref={boostHeadingRef}
-              className="text-6xl md:text-8xl lg:text-9xl font-black text-white mb-16 tracking-tight leading-none pb-4"
+              className="text-4xl sm:text-5xl md:text-7xl lg:text-9xl font-black text-white mb-10 sm:mb-14 md:mb-16 tracking-tight leading-none pb-4 break-words"
               style={{
                 textShadow: "0 4px 20px rgba(0, 0, 0, 0.3)",
                 textRendering: "optimizeLegibility",
-                minHeight: "120px"
+                minHeight: "80px"
               }}
             >
               Namaste
@@ -289,7 +291,7 @@ export default function UnfixedHero() {
             {/* Static subheading */}
             <p 
               ref={boostTextRef}
-              className="text-xl md:text-3xl lg:text-4xl text-gray-300 max-w-5xl leading-relaxed mx-auto"
+              className="text-base sm:text-lg md:text-2xl lg:text-4xl text-gray-300 max-w-5xl leading-relaxed mx-auto px-1 sm:px-2"
               style={{
                 textAlign: "center"
               }}
@@ -298,9 +300,9 @@ export default function UnfixedHero() {
             </p>
 
             {/* Scroll indicator */}
-            <div className="mt-16 opacity-60">
-              <div className="w-1 h-12 bg-white mx-auto rounded-full animate-pulse"></div>
-              <p className="text-sm mt-4 text-gray-400">Scroll to see the magic</p>
+            <div className="mt-10 sm:mt-12 md:mt-16 opacity-60">
+              <div className="w-1 h-8 sm:h-10 md:h-12 bg-white mx-auto rounded-full animate-pulse"></div>
+              <p className="text-xs sm:text-sm mt-3 sm:mt-4 text-gray-400">Scroll to see the magic</p>
             </div>
           </div>
         </div>

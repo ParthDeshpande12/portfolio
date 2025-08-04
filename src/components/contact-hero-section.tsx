@@ -37,15 +37,15 @@ const ContactHeroSection = ({ className = "" }: ContactHeroSectionProps) => {
           <div className="space-y-5 text-xl font-light">
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.4 }}>
               <span className="text-white font-medium">Office: </span>
-              <span className="text-white/70">Ozeanblickstraße, Berlin 10115, Germany</span>
+              <span className="text-white/70">Bangalore, India</span>
             </motion.div>
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.5 }}>
               <span className="text-white font-medium">Mail: </span>
-              <span className="text-white/70">hello@alexgraham.com</span>
+              <span className="text-white/70">maya.creative@example.com</span>
             </motion.div>
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.6 }}>
               <span className="text-white font-medium">Phone: </span>
-              <span className="text-white/70">+49 30 12345678</span>
+              <span className="text-white/70">+91 87654 32109</span>
             </motion.div>
           </div>
 

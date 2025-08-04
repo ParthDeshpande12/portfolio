@@ -271,7 +271,7 @@ export default function ActressBio() {
                 <div className="relative overflow-hidden rounded-2xl shadow-2xl">
                   <Image
                     src="/images/hero.jpg"
-                    alt="Suman Rana"
+                    alt="Maya Sharma"
                     width={600}
                     height={1200}
                     className="w-full h-auto object-cover"
@@ -312,20 +312,20 @@ export default function ActressBio() {
               {/* Main Title with character animation */}
               <div>
                 <h1 ref={titleRef} className="text-6xl lg:text-8xl font-light tracking-tight mb-4">
-                  <div className="block">{splitText("Suman")}</div>
+                  <div className="block">{splitText("Maya")}</div>
                   <div className="block text-white/70">{splitText("Rana")}</div>
                 </h1>
                 <p ref={subtitleRef} className="text-xl text-white/60 font-light">
-                  Actor . Doctor . Entrepreneur
+                  Artist . Creator . Innovator
                 </p>
               </div>
 
               {/* Bio */}
               <div className="bio-text space-y-6">
                 <p className="text-lg leading-relaxed text-white/80">
-                  A multifaceted talent from Kishtwar, blends medical expertise with artistic brilliance, excelling as a
-                  doctor, actor, model, and creative visionary. Her relentless pursuit of excellence and patriotic
-                  spirit inspire transformative storytelling and impactful collaborations.
+                  An innovative creative artist and storyteller, blending traditional techniques with modern innovation. 
+                  Recognized for bringing unique perspectives and emotional depth to diverse projects, with expertise
+                  spanning multiple artistic mediums and creative platforms.
                 </p>
 
                 <motion.div
@@ -340,7 +340,7 @@ export default function ActressBio() {
                     transition={{ duration: 0.2 }}
                   >
                     <MapPin size={16} />
-                    <span>Mumbai, Maharastra, India</span>
+                    <span>Bangalore, India</span>
                   </motion.div>
                 </motion.div>
               </div>
@@ -359,7 +359,7 @@ export default function ActressBio() {
               <div className="space-y-6">
                 <motion.div whileHover={{ x: 10 }} transition={{ duration: 0.2 }}>
                   <h3 className="text-white/60 text-sm uppercase tracking-wider mb-2">Full Name</h3>
-                  <p className="text-xl">Suman Rana</p>
+                  <p className="text-xl">Maya Sharma</p>
                 </motion.div>
                 <motion.div whileHover={{ x: 10 }} transition={{ duration: 0.2 }}>
                   <h3 className="text-white/60 text-sm uppercase tracking-wider mb-2">Nationality</h3>
@@ -367,7 +367,7 @@ export default function ActressBio() {
                 </motion.div>
                 <motion.div whileHover={{ x: 10 }} transition={{ duration: 0.2 }}>
                   <h3 className="text-white/60 text-sm uppercase tracking-wider mb-2">Born</h3>
-                  <p className="text-xl">3 April, Kishtwar, J&K</p>
+                  <p className="text-xl">22 August, Bangalore</p>
                 </motion.div>
                 <motion.div whileHover={{ x: 10 }} transition={{ duration: 0.2 }}>
                   <h3 className="text-white/60 text-sm uppercase tracking-wider mb-2">Height</h3>
@@ -375,7 +375,7 @@ export default function ActressBio() {
                 </motion.div>
                 <motion.div whileHover={{ x: 10 }} transition={{ duration: 0.2 }}>
                   <h3 className="text-white/60 text-sm uppercase tracking-wider mb-2">Vitals</h3>
-                  <p className="text-xl">34-26-36</p>
+                  <p className="text-xl">Available on request</p>
                 </motion.div>
                 <motion.div whileHover={{ x: 10 }} transition={{ duration: 0.2 }}>
                   <h3 className="text-white/60 text-sm uppercase tracking-wider mb-2">Shoe Size</h3>
@@ -383,11 +383,11 @@ export default function ActressBio() {
                 </motion.div>
                 <motion.div whileHover={{ x: 10 }} transition={{ duration: 0.2 }}>
                   <h3 className="text-white/60 text-sm uppercase tracking-wider mb-2">Skin Tone</h3>
-                  <p className="text-xl">Pinkish, Fair, Even, No Marks</p>
+                  <p className="text-xl">Fair, Even tone</p>
                 </motion.div>
                 <motion.div whileHover={{ x: 10 }} transition={{ duration: 0.2 }}>
                   <h3 className="text-white/60 text-sm uppercase tracking-wider mb-2">Hair Color</h3>
-                  <p className="text-xl">Satanic Brown</p>
+                  <p className="text-xl">Dark Brown</p>
                 </motion.div>
                 <motion.div whileHover={{ x: 10 }} transition={{ duration: 0.2 }}>
                   <h3 className="text-white/60 text-sm uppercase tracking-wider mb-2">Eye Color</h3>
@@ -395,15 +395,15 @@ export default function ActressBio() {
                 </motion.div>
                 <motion.div whileHover={{ x: 10 }} transition={{ duration: 0.2 }}>
                   <h3 className="text-white/60 text-sm uppercase tracking-wider mb-2">Tattoo</h3>
-                  <p className="text-xl">Small Tattoo on the right ankle</p>
+                  <p className="text-xl">None</p>
                 </motion.div>
                 <motion.div whileHover={{ x: 10 }} transition={{ duration: 0.2 }}>
                   <h3 className="text-white/60 text-sm uppercase tracking-wider mb-2">Medical History</h3>
-                  <p className="text-xl">No Marks, No Allergy</p>
+                  <p className="text-xl">Excellent health, no allergies</p>
                 </motion.div>
                 <motion.div whileHover={{ x: 10 }} transition={{ duration: 0.2 }}>
                   <h3 className="text-white/60 text-sm uppercase tracking-wider mb-2">Passport</h3>
-                  <p className="text-xl">Valid, frequent traveller</p>
+                  <p className="text-xl">Valid, available for travel</p>
                 </motion.div>
                 <motion.div whileHover={{ x: 10 }} transition={{ duration: 0.2 }}>
                   <h3 className="text-white/60 text-sm uppercase tracking-wider mb-2">Marital Status</h3>
@@ -411,7 +411,7 @@ export default function ActressBio() {
                 </motion.div>
                 <motion.div whileHover={{ x: 10 }} transition={{ duration: 0.2 }}>
                   <h3 className="text-white/60 text-sm uppercase tracking-wider mb-2">Resident</h3>
-                  <p className="text-xl">Mumbai, Maharastra, India</p>
+                  <p className="text-xl">Bangalore, India</p>
                 </motion.div>
               </div>
             </div>
@@ -422,7 +422,7 @@ export default function ActressBio() {
               <div className="space-y-6">
                 <motion.div whileHover={{ x: 10 }} transition={{ duration: 0.2 }}>
                   <h3 className="text-white/60 text-sm uppercase tracking-wider mb-2">Languages</h3>
-                  <p className="text-xl">Fluent in Hindi, English, Punjabi, Haryanvi, Rajasthani, and Urdu.</p>
+                  <p className="text-xl">Fluent in English, Hindi, Tamil, and Kannada.</p>
                 </motion.div>
                 <motion.div whileHover={{ x: 10 }} transition={{ duration: 0.2 }}>
                   <h3 className="text-white/60 text-sm uppercase tracking-wider mb-2">Dance</h3>
@@ -431,8 +431,7 @@ export default function ActressBio() {
                 <motion.div whileHover={{ x: 10 }} transition={{ duration: 0.2 }}>
                   <h3 className="text-white/60 text-sm uppercase tracking-wider mb-2">Dance</h3>
                   <p className="text-xl">
-                    Skilled in Yoga, Meditation, Swimming, and basic Horse Riding. Comfortable with animals (including
-                    insects/reptiles) and children. Capable of performing stunts.
+                    Proficient in Classical Dance, Martial Arts, and Rock Climbing. Experienced in working with diverse teams. Advanced technical skills.
                   </p>
                 </motion.div>
                 <motion.div whileHover={{ x: 10 }} transition={{ duration: 0.2 }}>
@@ -444,15 +443,13 @@ export default function ActressBio() {
                     Medical Knowledge (Relevant for specific roles):
                   </h3>
                   <p className="text-xl">
-                    Ph.D. in Health Management with specializations in Obstetrics & Gynaecology. Certified in ACLS
-                    (Advanced Cardiovascular Life Supports) and BLS (Basic Life Support).
+                    Advanced training in Digital Arts and Creative Direction. Technology integration specialist.
                   </p>
                 </motion.div>
                 <motion.div whileHover={{ x: 10 }} transition={{ duration: 0.2 }}>
                   <h3 className="text-white/60 text-sm uppercase tracking-wider mb-2">Philanthropic Endeavors</h3>
                   <p className="text-xl">
-                    Involved with Suman Rana&apos;s Trust for older age & Orphan Kids, and leads a private team dedicated to
-                    street animals & human care.
+                    Passionate advocate for environmental conservation and digital literacy programs in rural communities.
                   </p>
                 </motion.div>
               </div>
@@ -479,8 +476,8 @@ export default function ActressBio() {
                     >
                       <Film size={16} className="text-white/40" />
                       <div>
-                        <p className="text-xl">&quot;Aam Aadmi&quot; (2018)</p>
-                        <p className="text-white/60 text-sm">Suman Rana as Kiara Rana</p>
+                        <p className="text-xl">&quot;Urban Dreams&quot; (2020)</p>
+                        <p className="text-white/60 text-sm">Supporting Role as Maya</p>
                       </div>
                     </motion.div>
                     <motion.div
@@ -490,8 +487,8 @@ export default function ActressBio() {
                     >
                       <Film size={16} className="text-white/40" />
                       <div>
-                        <p className="text-xl">&quot;A Biopic from the Film Industry&quot; (2019)</p>
-                        <p className="text-white/60 text-sm">Actress</p>
+                        <p className="text-xl">&quot;Stories of Tomorrow&quot; (2021)</p>
+                        <p className="text-white/60 text-sm">Lead Actress</p>
                       </div>
                     </motion.div>
                     <motion.div
@@ -501,8 +498,8 @@ export default function ActressBio() {
                     >
                       <Film size={16} className="text-white/40" />
                       <div>
-                        <p className="text-xl">&quot;Miracle&quot; (2019)</p>
-                        <p className="text-white/60 text-sm">Actress</p>
+                        <p className="text-xl">&quot;New Horizons&quot; (2022)</p>
+                        <p className="text-white/60 text-sm">Featured Role</p>
                       </div>
                     </motion.div>
                     <motion.div
@@ -512,8 +509,8 @@ export default function ActressBio() {
                     >
                       <Film size={16} className="text-white/40" />
                       <div>
-                        <p className="text-xl">&quot;JCLS 369&quot; (2026)</p>
-                        <p className="text-white/60 text-sm">Actress</p>
+                        <p className="text-xl">&quot;Digital Age&quot; (2024)</p>
+                        <p className="text-white/60 text-sm">Lead Role</p>
                       </div>
                     </motion.div>
                     <motion.div
@@ -523,8 +520,8 @@ export default function ActressBio() {
                     >
                       <Film size={16} className="text-white/40" />
                       <div>
-                        <p className="text-xl">&quot;Let&apos;s Meet&quot; (2025)</p>
-                        <p className="text-white/60 text-sm">Suman Rana as Priya</p>
+                        <p className="text-xl">&quot;City Lights&quot; (2023)</p>
+                        <p className="text-white/60 text-sm">Maya as Priya</p>
                       </div>
                     </motion.div>
                     <motion.div
@@ -534,8 +531,8 @@ export default function ActressBio() {
                     >
                       <Film size={16} className="text-white/40" />
                       <div>
-                        <p className="text-xl">&quot;THE DIPLOMAT&quot; (2025)</p>
-                        <p className="text-white/60 text-sm">Shaheen, Uzma&apos;s friend in Malaysia</p>
+                        <p className="text-xl">&quot;Global Connections&quot; (2024)</p>
+                        <p className="text-white/60 text-sm">Supporting Character</p>
                       </div>
                     </motion.div>
                   </div>
@@ -551,8 +548,8 @@ export default function ActressBio() {
                     >
                       <Star size={16} className="text-white/40" />
                       <div>
-                        <p className="text-xl">&quot;Zindagi ke Mehak&quot; (2016 ZEE TV)</p>
-                        <p className="text-white/60 text-sm">Suman Rana as Shruti Oberoi</p>
+                        <p className="text-xl">&quot;Life's Journey&quot; (2019 Popular TV)</p>
+                        <p className="text-white/60 text-sm">Maya as Shreya</p>
                       </div>
                     </motion.div>
                     <motion.div
@@ -562,8 +559,8 @@ export default function ActressBio() {
                     >
                       <Star size={16} className="text-white/40" />
                       <div>
-                        <p className="text-xl">&quot;Meri Hanikarak Biwi&quot; (2017 & TV)</p>
-                        <p className="text-white/60 text-sm">Suman Rana appeared as Tanya</p>
+                        <p className="text-xl">&quot;Family Bonds&quot; (2020 Prime Network)</p>
+                        <p className="text-white/60 text-sm">Maya appeared as Tanya</p>
                       </div>
                     </motion.div>
                   </div>
@@ -628,20 +625,16 @@ export default function ActressBio() {
         <div className="max-w-4xl mx-auto text-center">
           <div className="scroll-reveal space-y-8">
             <h2 className="text-4xl font-light">Youtube</h2>
-            <p className="text-white/60 text-lg">Watch the official music video &apos;Badami Rangya&apos;</p>
+            <p className="text-white/60 text-lg">Watch latest performance highlights</p>
 
             <motion.div
               className="relative aspect-video bg-gray-900 rounded-lg overflow-hidden"
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3 }}
             >
-              <iframe
-                src="https://www.youtube.com/embed/b-tl4nFIVW8"
-                title="Badami Rangya - Official Music Video"
-                className="w-full h-full"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
+              <div className="w-full h-full bg-gray-800 rounded-lg flex items-center justify-center">
+                <p className="text-white/60 text-lg">Video content available upon request</p>
+              </div>
             </motion.div>
           </div>
         </div>
@@ -661,7 +654,7 @@ export default function ActressBio() {
                 <Mail className="text-white/40" size={20} />
                 <div>
                   <p className="text-sm text-white/60 uppercase tracking-wider">Email</p>
-                  <p className="text-lg">officialsumanrana@gmail.com</p>
+                  <p className="text-lg">maya.creative@example.com</p>
                 </div>
               </motion.div>
               <motion.div
@@ -672,7 +665,7 @@ export default function ActressBio() {
                 <Phone className="text-white/40" size={20} />
                 <div>
                   <p className="text-sm text-white/60 uppercase tracking-wider">Agent</p>
-                  <p className="text-lg">+ 91 837 799 0420</p>
+                  <p className="text-lg">+ 91 87654 32109</p>
                 </div>
               </motion.div>
               <motion.div
@@ -683,7 +676,7 @@ export default function ActressBio() {
                 <MapPin className="text-white/40" size={20} />
                 <div>
                   <p className="text-sm text-white/60 uppercase tracking-wider">Location</p>
-                  <p className="text-lg">Mumbai, Maharastra, India</p>
+                  <p className="text-lg">New Delhi, India</p>
                 </div>
               </motion.div>
             </div>
@@ -700,7 +693,7 @@ export default function ActressBio() {
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.6 }}
           >
-            © 2025 Suman Rana. All rights reserved.
+            © 2025 Maya Sharma. All rights reserved.
           </motion.p>
         </div>
       </footer>

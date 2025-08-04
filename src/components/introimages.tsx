@@ -18,26 +18,114 @@ export default function IntroImages() {
   // })
 
   // STOP zooming completely once it fills the screen (back to original)
-  const volunteerScale = useTransform(scrollYProgress, [0, 0.3, 0.4, 1], [1, 1, 2.5, 2.5])
-  const volunteerZIndex = useTransform(scrollYProgress, [0, 0.3, 1], [1, 1, 50])
+  // Adjust scrollYProgress mapping so zoom starts when section is near center
+  // The sticky container is h-screen, so center is at 50vh scroll
+
+  // Move the zoom trigger back to 0.40 (similar to 0.35, which worked perfectly)
+  const volunteerScale = useTransform(scrollYProgress, [0, 0.4, 0.55, 1], [1, 1, 2.5, 2.5])
+  const volunteerZIndex = useTransform(scrollYProgress, [0, 0.4, 1], [1, 1, 50])
 
   // Push surrounding images away as center image zooms (back to original)
-  const leftImagesPush = useTransform(scrollYProgress, [0, 0.3, 0.4, 1], [0, 0, -200, -200])
-  const rightImagesPush = useTransform(scrollYProgress, [0, 0.3, 0.4, 1], [0, 0, 200, 200])
-  const sideImagesScale = useTransform(scrollYProgress, [0, 0.3, 0.4, 1], [1, 1, 0.8, 0.8])
+  // Reduced push distance for mobile
+  const leftImagesPush = useTransform(scrollYProgress, [0, 0.4, 0.55, 1], [0, 0, -200, -200])
+  const rightImagesPush = useTransform(scrollYProgress, [0, 0.4, 0.55, 1], [0, 0, 200, 200])
+  const sideImagesScale = useTransform(scrollYProgress, [0, 0.4, 0.55, 1], [1, 1, 0.8, 0.8])
+
+  // Mobile-specific push distances (less aggressive)
+  const leftImagesPushMobile = useTransform(scrollYProgress, [0, 0.4, 0.55, 1], [0, 0, -100, -100])
+  const rightImagesPushMobile = useTransform(scrollYProgress, [0, 0.4, 0.55, 1], [0, 0, 100, 100])
 
   // Surprise text animation - appears AFTER zoom completes (back to original)
-  const textOpacity = useTransform(scrollYProgress, [0, 0.4, 0.45, 1], [0, 0, 1, 1])
-  const textScale = useTransform(scrollYProgress, [0, 0.4, 0.45, 1], [0.5, 0.5, 1, 1])
-  const textY = useTransform(scrollYProgress, [0, 0.4, 0.45, 1], [50, 50, 0, 0])
+  const textOpacity = useTransform(scrollYProgress, [0, 0.55, 0.6, 1], [0, 0, 1, 1])
+  const textScale = useTransform(scrollYProgress, [0, 0.55, 0.6, 1], [0.5, 0.5, 1, 1])
+  const textY = useTransform(scrollYProgress, [0, 0.55, 0.6, 1], [50, 50, 0, 0])
 
   return (
     <section className="h-[150vh] bg-[#181a1b] relative" ref={imageContainerRef}>
       {/* Sticky container that holds the images */}
       <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden">
         {/* Image Grid with Zoom Effect */}
-        <div className="w-full">
-          <div className="flex h-[500px] w-full">
+        <div className="w-full px-2 sm:px-4 md:px-0">
+          {/* Mobile Layout - Vertical Stack */}
+          <div className="flex md:hidden flex-col h-[500px] w-full">
+            {/* Top Images Row - Mobile */}
+            <motion.div
+              className="flex gap-2 h-[100px] mb-4"
+              style={{
+                y: useTransform(scrollYProgress, [0, 0.4, 0.55, 1], [0, 0, -80, -80]),
+                scale: sideImagesScale,
+              }}
+            >
+              <div className="relative flex-1 rounded-xl overflow-hidden">
+                <Image
+                  src="/images/2.jpg"
+                  alt="Top image 1"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="relative flex-1 rounded-xl overflow-hidden">
+                <Image
+                  src="/images/3.jpg"
+                  alt="Top image 2"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </motion.div>
+
+            {/* Center Image - Mobile */}
+            <motion.div
+              className="flex-1 mx-4 relative"
+              id="volunteer-section"
+              style={{
+                scale: volunteerScale,
+                zIndex: volunteerZIndex,
+                transformOrigin: "center center",
+              }}
+            >
+              <div className="relative h-full rounded-xl overflow-hidden">
+                <Image
+                  src="/images/1.jpg"
+                  alt="Center image"
+                  fill
+                  className="object-cover object-center"
+                  priority
+                  quality={95}
+                  sizes="(max-width: 640px) 80vw, 60vw"
+                />
+              </div>
+            </motion.div>
+
+            {/* Bottom Images Row - Mobile */}
+            <motion.div
+              className="flex gap-2 h-[100px] mt-4"
+              style={{
+                y: useTransform(scrollYProgress, [0, 0.4, 0.55, 1], [0, 0, 80, 80]),
+                scale: sideImagesScale,
+              }}
+            >
+              <div className="relative flex-1 rounded-xl overflow-hidden">
+                <Image
+                  src="/images/2.jpg"
+                  alt="Bottom image 1"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="relative flex-1 rounded-xl overflow-hidden">
+                <Image
+                  src="/images/3.jpg"
+                  alt="Bottom image 2"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Desktop Layout - Horizontal */}
+          <div className="hidden md:flex h-[500px] w-full">
             {/* Far Left - GETS PUSHED LEFT */}
             <motion.div
               className="w-[200px] -ml-32"
@@ -100,7 +188,7 @@ export default function IntroImages() {
                   className="object-cover object-center"
                   priority
                   quality={95}
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 60vw"
+                  sizes="(max-width: 1200px) 40vw, 30vw"
                 />
               </div>
             </motion.div>
@@ -151,17 +239,17 @@ export default function IntroImages() {
           </div>
         </div>
 
-        {/* SURPRISE TEXT - POSITIONED RELATIVE TO VIEWPORT */}
+        {/* SURPRISE TEXT - POSITIONED RELATIVE TO VIEWPORT - Mobile responsive */}
         <motion.div
-          className="absolute bottom-16 right-16 z-[100]"
+          className="absolute bottom-8 sm:bottom-16 md:bottom-32 right-4 sm:right-8 md:right-16 z-[100] max-w-[calc(100vw-2rem)] sm:max-w-none"
           style={{
             opacity: textOpacity,
             scale: textScale,
             y: textY,
           }}
         >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white drop-shadow-[0_4px_8px_rgba(0,0,0,0.8)] stroke-black">
-            <span className="inline-block w-16 h-1 bg-white mr-4 align-middle drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"></span>
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-white drop-shadow-[0_4px_8px_rgba(0,0,0,0.8)] stroke-black leading-tight">
+            <span className="inline-block w-8 sm:w-12 md:w-16 h-0.5 sm:h-1 bg-white mr-2 sm:mr-4 align-middle drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"></span>
             where care drives change.
           </h2>
         </motion.div>
